@@ -2,3 +2,4 @@ https://pkg.go.dev/ - search packages
 https://devhints.io/go - cheatsheet
 https://github.com/a8m/golang-cheat-sheet - more informative cheatsheet
 https://github.com/sefus/the-little-go-book/blob/master/ru/go.md - book (better than official)
+https://github.com/uber-go/guide/blob/master/style.md - style guide
