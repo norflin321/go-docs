@@ -1,0 +1,10 @@
+https://pkg.go.dev/ - search packages
+go get <name> - install packages, then installed globally to GOPATH directory (go env)
+go run <path to main.go>
+go run ./src/main.go | go run ./src
+go build -o <path of out file> <source directory with main.go and other files of the same package> - to build binary from package
+go build -o ./out ./src/... - example
+
+https://devhints.io/go - cheatsheet
+https://github.com/a8m/golang-cheat-sheet - more informative cheatsheet
+https://github.com/sefus/the-little-go-book/blob/master/ru/go.md - book (better than official)
