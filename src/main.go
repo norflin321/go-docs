@@ -7,8 +7,8 @@ import (
 func main() {
 	fmt.Println("GO Crash course")
 
-	// msg, err := dataTypes()
-	// fmt.Println(msg, err)
+	msg, err := dataTypes()
+	fmt.Println(msg, err)
 
 	// advanced()
 
@@ -19,5 +19,5 @@ func main() {
 
 	// myvar := 0
 	// myvarPointer := &myvar
-	fmt.Println()
+	// fmt.Println()
 }

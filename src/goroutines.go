@@ -6,6 +6,21 @@ import (
 	"time"
 )
 
+type Worker struct {
+	id int
+}
+
+// отправка и прием данных являются блокирующими операциями
+// во время получения данных из канала выполнение горутины
+// останавливается пока данные не доступны. Аналогично когда мы отправляем
+// в канал, выполнение не продолжается пока данные не получены.
+func (w *Worker) process(channel chan int) {
+	fmt.Printf("обработчик %d listening...\n", w.id)
+	data := <-channel // VAR := <-CHANNEL получаем из него
+	// execution continues after we got some data through channel
+	fmt.Printf(" - обработчик %d получил %d\n", w.id, data)
+}
+
 func goroutines() {
 	// Горутины похожи на потоки, но они управляются самим Go,
 	// а не операционной системой. Код, который запускается как горутина,
@@ -30,19 +45,4 @@ func goroutines() {
 	// будут приняты только одним получателем.
 	c <- rand.Intn(100) // CHANNEL <- DATA отправляем в канал
 	time.Sleep(time.Millisecond * 2000)
-}
-
-type Worker struct {
-	id int
-}
-
-// отправка и прием данных являются блокирующими операциями
-// во время получения данных из канала выполнение горутины
-// останавливается пока данные не доступны. Аналогично когда мы отправляем
-// в канал, выполнение не продолжается пока данные не получены.
-func (w *Worker) process(c chan int) {
-	fmt.Printf("обработчик %d listening...\n", w.id)
-	data := <-c // VAR := <-CHANNEL получаем из него
-	// execution continues after we got some data through channel
-	fmt.Printf(" - обработчик %d получил %d\n", w.id, data)
 }

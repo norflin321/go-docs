@@ -1,3 +1,4 @@
+//
 // https://github.com/sefus/the-little-go-book/blob/master/ru/go.md
 //
 // Go не является объектно-ориентированным языком (ОО-языком).
