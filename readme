@@ -1,11 +1,24 @@
-https://pkg.go.dev/ - search packages
-https://devhints.io/go - cheatsheet
-https://github.com/a8m/golang-cheat-sheet - more informative cheatsheet
-https://github.com/sefus/the-little-go-book/blob/master/ru/go.md - book (better than official)
-https://github.com/uber-go/guide/blob/master/style.md - style guide
+# Resources
+cheatsheet 1: [https://devhints.io/go]
+cheatsheet 2: [https://github.com/a8m/golang-cheat-sheet]
+little book:  [https://github.com/sefus/the-little-go-book/blob/master/ru/go.md]
+style guide:  [https://github.com/uber-go/guide/blob/master/style.md]
+performance:  [https://github.com/uber-go/guide/blob/master/style.md#performance]
 
-go get <name> - install packages, then installed globally to GOPATH directory (go env)
-go run <path to main.go>
-go run ./src/main.go | go run ./src
-go build -o <path of out file> <source directory with main.go and other files of the same package> - to build binary from package
-go build -o ./out ./src/... - example
+# Commands
+install:     [go get <name>]
+run:         [go run ./app]
+build:       [go build -o ./out ./app]
+build flags: [go build -o ./out -gcflags="-m" ./app]
+
+# Pointers?
+-  Passing pointers in Go is often slower than passing values.
+   You can check what the escape analysis is doing with -gcflags="-m" flag,
+   if a variable does not escape to the heap, it lives on the stack and does not
+	 require a garbage collector to clean up.
+-  Pointers can have a benefit when you have structs containing lots of data.
+	 When you have these, the overhead of the garbage collector might be negated by the
+   overhead you’d get when copying large amounts of data.
+-  The only way to mutate a variable that you pass to a function is by passing a pointer.
+   By default, the pass-by-value means that changes you make are on the copy you’re working on.
+	 Thus, they are not reflected in the calling function.

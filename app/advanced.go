@@ -4,6 +4,12 @@ import (
 	"fmt"
 )
 
+// Pointers
+//
+// - Just like in C, & means "address of" and assigns a pointer which is marked as *T.
+// - But * also means "value of", or dereferencing the pointer, and assigns the value.
+// - This dual use of * is what gets newbies confused about pointers.
+
 // Когда мы вызываем функцию с аргументами, аргументы копируются в функцию
 func zero(x int) {
 	x = 0
@@ -28,21 +34,16 @@ func (c *Circle) changeName(name string) {
 }
 
 func advanced() {
-	// Pointers
 	x := 5
-	zero(x)
+	zero(x)             // copy
 	fmt.Println("x", x) // x всё еще равен 5
 
 	y := 5
-	zeroPointer(&y)
+	zeroPointer(&y)     // reference
 	fmt.Println("y", y) // y is 0
 
 	// создать экземпляр нового типа
-	// var c Circle
-	// c = Circle{x: 1, y: 2, z: 3, name: "jd"}
-
-	// или
-	c := Circle{1, 2, 3, "jd"}
+	c := Circle{x: 1, y: 2, z: 3, name: "jd"}
 	c.changeName("Depp")
 
 	fmt.Println(c.name, c.x, c.y, c.z)
